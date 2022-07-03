@@ -1,0 +1,80 @@
+.app {
+  display: grid;
+  place-items: center;
+  background-color: #c3c3c3;
+  height: 100vh;
+}
+
+.chatBody {
+  background-color: #fcfcfc;
+  width: 90vw;
+  height: 90vh;
+  box-shadow: 1px 1px 10px grey;
+}
+
+.sidebar {
+  width: 30%;
+  height: 90vh;
+  padding: 15px;
+  border-right: 1px solid #c3c3c3;
+}
+
+.inputField {
+  display: flex;
+  align-items: center;
+}
+
+.inputField img,
+.inputField input {
+  padding: 10px;
+  background-color: #efefef;
+}
+
+.inputField img {
+  width: 35px;
+}
+
+.inputField input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.conversation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+.conversation .text {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.conversation button {
+  padding: 4px 6px;
+  border-radius: 50%;
+  background-color: #fcfcfc;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.user .text {
+  flex: 2;
+}
+.text .name {
+  margin-bottom: 5px;
+}
+.text .someText,
+.user .time {
+  font-size: 0.8rem;
+  color: grey;
+}
