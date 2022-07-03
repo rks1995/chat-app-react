@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '../styles/app.module.css'
 import toast from 'react-hot-toast'
+import { data } from '../data'
+import Spinner from './Spinner'
 
 const Sidebar = () => {
   const [inputText, setInputText] = useState('')
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const getUsers = () => {
+      setUsers(data.users)
+      setTimeout(() => {
+        setLoading(false) // inorder to show loader
+      }, 1000)
+    }
+    getUsers()
+  }, [])
 
   const handleSearch = (e) => {
-    console.log(e.key)
+    console.log('change')
     if (e.key === 'Enter') {
       if (!inputText) {
         toast.error('enter valid user', {
@@ -14,6 +28,13 @@ const Sidebar = () => {
         })
       }
     }
+
+    let newUser = data.users.filter((user) => {
+      let name = user.name.toLowerCase()
+      return name.includes(inputText)
+    })
+
+    setUsers(newUser)
   }
 
   return (
@@ -39,20 +60,24 @@ const Sidebar = () => {
       </div>
       <div className={styles.contacts}>
         <ul>
-          <li className={styles.user}>
-            <div className={styles.profile}>
-              <img
-                src='https://cdn-icons-png.flaticon.com/512/4825/4825015.png'
-                alt='avatar'
-                width={45}
-              />
-            </div>
-            <div className={styles.text}>
-              <p className={styles.name}>Savio Meitei</p>
-              <p className={styles.someText}>Some text ....</p>
-            </div>
-            <div className={styles.time}>9.15Am</div>
-          </li>
+          {loading ? (
+            <Spinner />
+          ) : (
+            users.map((user) => {
+              return (
+                <li className={styles.user} key={user.id}>
+                  <div className={styles.profile}>
+                    <img src={user.img_url} alt='avatar' width={45} />
+                  </div>
+                  <div className={styles.text}>
+                    <p className={styles.name}>{user.name}</p>
+                    <p className={styles.someText}>Some text ....</p>
+                  </div>
+                  <div className={styles.time}>9.15Am</div>
+                </li>
+              )
+            })
+          )}
         </ul>
       </div>
     </div>
