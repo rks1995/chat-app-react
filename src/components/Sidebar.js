@@ -1,41 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from '../styles/app.module.css'
-import toast from 'react-hot-toast'
-import { data } from '../data'
+
 import Spinner from './Spinner'
+import { useContacts } from '../hooks/useContacts'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const [inputText, setInputText] = useState('')
-  const [users, setUsers] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const getUsers = () => {
-      setUsers(data.users)
-      setTimeout(() => {
-        setLoading(false) // inorder to show loader
-      }, 1000)
-    }
-    getUsers()
-  }, [])
-
-  const handleSearch = (e) => {
-    console.log('change')
-    if (e.key === 'Enter') {
-      if (!inputText) {
-        toast.error('enter valid user', {
-          position: 'top-right',
-        })
-      }
-    }
-
-    let newUser = data.users.filter((user) => {
-      let name = user.name.toLowerCase()
-      return name.includes(inputText)
-    })
-
-    setUsers(newUser)
-  }
+  const contacts = useContacts()
+  const { users, loading, handleSearch } = contacts
 
   return (
     <div className={styles.sidebar}>
@@ -54,7 +26,7 @@ const Sidebar = () => {
       </div>
       <div className={styles.conversation}>
         <span className={styles.text}>conversations</span>
-        <button>
+        <button {...props}>
           <i className='fa-solid fa-plus'></i>
         </button>
       </div>

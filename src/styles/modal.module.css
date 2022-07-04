@@ -1,0 +1,38 @@
+.modal {
+  width: 30vw;
+  height: 40vh;
+  padding: 10px;
+  background-color: #1b2430;
+  position: absolute;
+  inset: 0;
+  left: 27vw;
+  top: 10vh;
+  animation: open 0.5s ease-in-out;
+}
+
+@keyframes open {
+  0% {
+    transform: scale(0.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.modalSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modalSearch input {
+  flex: 2;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+.modalSearch i {
+  color: #f94c66;
+}
