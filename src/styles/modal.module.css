@@ -2,7 +2,8 @@
   width: 30vw;
   height: 40vh;
   padding: 10px;
-  background-color: #1b2430;
+  background-color: #53bf9d;
+  overflow-x: scroll;
   position: absolute;
   inset: 0;
   left: 27vw;
@@ -35,4 +36,29 @@
 
 .modalSearch i {
   color: #f94c66;
+}
+
+.modalContacts li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #a0d995;
+}
+.modalContacts li p {
+  flex: 2;
+  text-align: center;
+}
+
+.startConversation {
+  position: fixed;
+  left: 59vw;
+  top: 49vh;
+  background-color: teal;
+  padding: 10px 12px;
+  border-radius: 50%;
+}
+.startConversation i {
+  color: #a0d995;
 }

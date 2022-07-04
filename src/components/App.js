@@ -10,12 +10,17 @@ function App() {
     setShowModal(true)
   }
 
+  const handleCloseModal = (e) => {
+    e.preventDefault()
+    setShowModal(false)
+  }
+
   return (
     <div className={styles.app}>
       <div className={styles.chatBody}>
         {/* sidebar */}
         <Sidebar onClick={handleOpenConversation} />
-        {showModal && <Modal />}
+        {showModal && <Modal onClick={handleCloseModal} />}
         {/* chat */}
       </div>
     </div>
