@@ -22,6 +22,11 @@ const useContactsProvider = () => {
   }, [])
 
   const handleSearch = (e) => {
+    if (!e.target.value) {
+      setUsers(data.users)
+      return
+    }
+
     console.log('change')
     if (e.key === 'Enter') {
       if (!e.target.value) {

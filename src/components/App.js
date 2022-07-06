@@ -2,6 +2,8 @@ import Sidebar from './Sidebar'
 import Modal from './Modal'
 import styles from '../styles/app.module.css'
 import { useState } from 'react'
+import Chat from './Chat'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -18,10 +20,11 @@ function App() {
   return (
     <div className={styles.app}>
       <div className={styles.chatBody}>
-        {/* sidebar */}
-        <Sidebar onClick={handleOpenConversation} />
         {showModal && <Modal onClick={handleCloseModal} />}
-        {/* chat */}
+        <Sidebar handleOpenConversation={handleOpenConversation} />
+        <Routes>
+          <Route path='chat/:chatId' element={<Chat />} />
+        </Routes>
       </div>
     </div>
   )

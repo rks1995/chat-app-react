@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { useContacts } from '../hooks/useContacts'
 import styles from '../styles/modal.module.css'
+import { data } from '../data'
 
 const Modal = (props) => {
-  const contacts = useContacts()
-  const [modalUsers, setModalUsers] = useState(contacts.users)
+  const [modalUsers, setModalUsers] = useState(data.users)
   const [inputText, setInputText] = useState('')
 
   const handleModalSearch = (e) => {
@@ -18,7 +17,7 @@ const Modal = (props) => {
         return
       }
     }
-    let newUser = contacts.users.filter((user) => {
+    let newUser = data.users.filter((user) => {
       let name = user.name.toLowerCase()
       return name.includes(e.target.value)
     })

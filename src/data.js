@@ -20,13 +20,13 @@ export const data = {
     },
     {
       id: 4,
-      name: 'Ankur Sharma',
+      name: 'Jitu',
       img_url: 'https://cdn-icons-png.flaticon.com/512/4825/4825123.png',
       chats: [],
     },
     {
       id: 5,
-      name: 'Bijita Panging',
+      name: 'Rose',
       img_url: 'https://cdn-icons-png.flaticon.com/512/4825/4825112.png',
       chats: [],
     },

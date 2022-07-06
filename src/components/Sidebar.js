@@ -3,6 +3,7 @@ import styles from '../styles/app.module.css'
 
 import Spinner from './Spinner'
 import { useContacts } from '../hooks/useContacts'
+import { Link } from 'react-router-dom'
 
 const Sidebar = (props) => {
   const [inputText, setInputText] = useState('')
@@ -26,7 +27,7 @@ const Sidebar = (props) => {
       </div>
       <div className={styles.conversation}>
         <span className={styles.text}>conversations</span>
-        <button {...props}>
+        <button onClick={props.handleOpenConversation}>
           <i className='fa-solid fa-plus'></i>
         </button>
       </div>
@@ -37,16 +38,18 @@ const Sidebar = (props) => {
           ) : (
             users.map((user) => {
               return (
-                <li className={styles.user} key={user.id}>
-                  <div className={styles.profile}>
-                    <img src={user.img_url} alt='avatar' width={45} />
-                  </div>
-                  <div className={styles.text}>
-                    <p className={styles.name}>{user.name}</p>
-                    <p className={styles.someText}>Some text ....</p>
-                  </div>
-                  <div className={styles.time}>9.15Am</div>
-                </li>
+                <Link to={`/chat/${user.id}`} key={user.id}>
+                  <li className={styles.user}>
+                    <div className={styles.profile}>
+                      <img src={user.img_url} alt='avatar' width={45} />
+                    </div>
+                    <div className={styles.text}>
+                      <p className={styles.name}>{user.name}</p>
+                      <p className={styles.someText}>Some text ....</p>
+                    </div>
+                    <div className={styles.time}>9.15Am</div>
+                  </li>
+                </Link>
               )
             })
           )}

@@ -1,0 +1,104 @@
+.chat {
+  width: 100%;
+  overflow-y: scroll;
+}
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 68.7%;
+  padding: 10px;
+  border-bottom: 1px solid #c3c3c3;
+  position: fixed;
+  background-color: #fff;
+}
+
+.addConversationIcon i {
+  background-color: #444;
+  padding: 5px;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ======================== chat message section =========================== */
+
+.message {
+  padding: 20px;
+  background-color: #eaf6f6;
+}
+
+.message li:first-child {
+  margin-top: 80px;
+}
+.message li {
+  margin: 15px 0;
+  padding: 10px;
+  width: 30vw;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+}
+.message .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: gray;
+  font-size: 0.75rem;
+}
+.user span {
+  color: #000;
+  font-weight: bold;
+}
+
+.message .yourMessage {
+  display: grid;
+  place-content: end;
+  text-align: right;
+}
+
+.message .yourMessage li {
+  background-color: teal;
+  color: #fff;
+}
+
+.message .yourMessage .user {
+  justify-content: flex-end;
+}
+
+/* =================== chat footer ========================== */
+
+.chatFooter {
+  width: 62%;
+  margin-left: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 48px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #cecece;
+}
+.chatFooter input,
+.chatFooter .attachment,
+.chatFooter button {
+  padding: 10px;
+  cursor: pointer;
+}
+.chatFooter .attachment {
+  padding: 9px;
+  background-color: #fff;
+}
+.chatFooter button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+}
+.chatFooter input {
+  width: 100%;
+  border: none;
+  outline: none;
+}

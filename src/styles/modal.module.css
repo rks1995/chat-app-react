@@ -58,6 +58,7 @@
   background-color: teal;
   padding: 10px 12px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .startConversation i {
   color: #a0d995;
