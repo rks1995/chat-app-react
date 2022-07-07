@@ -44,15 +44,11 @@ const Modal = (props) => {
           {modalUsers.map((user) => {
             return (
               <li key={user.id}>
-                <input type='checkbox' name='' id='' />
                 <p>{user.name}</p>
               </li>
             )
           })}
         </ul>
-      </div>
-      <div className={styles.startConversation}>
-        <i className='fa-solid fa-arrow-up-right-from-square'></i>
       </div>
     </div>
   )

@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useContacts } from '../hooks/useContacts'
 import styles from '../styles/chat.module.css'
+import { data } from '../data'
 
 const Chat = (props) => {
   const [userDetails, setUserDetails] = useState([])
-  const contacts = useContacts()
   const { chatId } = useParams()
 
   useEffect(() => {
     const handleOpenChats = () => {
-      let user = contacts.users.filter((user) => {
+      let user = data.users.filter((user) => {
         return Number(user.id) === Number(chatId)
       })
       console.log(user)

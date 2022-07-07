@@ -39,27 +39,14 @@
 }
 
 .modalContacts li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 10px 0;
   padding: 10px;
-  background-color: #a0d995;
-}
-.modalContacts li p {
-  flex: 2;
   text-align: center;
-}
-
-.startConversation {
-  position: fixed;
-  left: 59vw;
-  top: 49vh;
-  background-color: teal;
-  padding: 10px 12px;
-  border-radius: 50%;
+  background-color: #a0d995;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
-.startConversation i {
-  color: #a0d995;
+.modalContacts li:hover {
+  background-color: teal;
+  color: #fff;
 }
