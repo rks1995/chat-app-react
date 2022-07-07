@@ -70,7 +70,7 @@
 
 .chatFooter {
   width: 62%;
-  margin-left: 25px;
+  margin-left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,4 +101,12 @@
   width: 100%;
   border: none;
   outline: none;
+}
+
+.emoji {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 10px;
+  cursor: pointer;
 }

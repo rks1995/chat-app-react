@@ -23,7 +23,10 @@ function App() {
         {showModal && <Modal onClick={handleCloseModal} />}
         <Sidebar handleOpenConversation={handleOpenConversation} />
         <Routes>
-          <Route path='chat/:chatId' element={<Chat />} />
+          <Route
+            path='chat/:chatId'
+            element={<Chat handleOpenConversation={handleOpenConversation} />}
+          />
         </Routes>
       </div>
     </div>

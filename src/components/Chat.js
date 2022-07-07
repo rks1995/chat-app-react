@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useContacts } from '../hooks/useContacts'
 import styles from '../styles/chat.module.css'
 
-const Chat = () => {
+const Chat = (props) => {
   const [userDetails, setUserDetails] = useState([])
   const contacts = useContacts()
   const { chatId } = useParams()
@@ -28,7 +28,10 @@ const Chat = () => {
         <div className={styles.userName}>
           {userDetails && <p>{userDetails.name}</p>}
         </div>
-        <div className={styles.addConversationIcon}>
+        <div
+          className={styles.addConversationIcon}
+          onClick={props.handleOpenConversation}
+        >
           <i className='fa-solid fa-plus'></i>
         </div>
       </header>
@@ -88,9 +91,15 @@ const Chat = () => {
       </div>
       <footer className={styles.chatFooter}>
         <div className={styles.attachment}>
-          <i class='fa-solid fa-link'></i>
+          <i className='fa-solid fa-link'></i>
         </div>
         <input type='text' placeholder='Send Message' />
+        <div className={styles.emoji}>
+          <span>🙂</span>
+          <span>
+            <i className='fa-solid fa-angle-down'></i>
+          </span>
+        </div>
         <button>Send</button>
       </footer>
     </div>
