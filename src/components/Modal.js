@@ -10,7 +10,6 @@ const Modal = (props) => {
   const contacts = useContacts()
 
   const handleModalSearch = (e) => {
-    console.log('change')
     if (e.key === 'Enter') {
       if (!inputText) {
         toast.error('Invalid User', {
@@ -23,7 +22,6 @@ const Modal = (props) => {
       let name = user.name.toLowerCase()
       return name.includes(e.target.value)
     })
-    console.log(newUser)
     setModalUsers(newUser)
   }
 
@@ -35,7 +33,7 @@ const Modal = (props) => {
           placeholder='search'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          onKeyDown={handleModalSearch}
+          onKeyUp={handleModalSearch}
         />
         <a href='/' type='button' {...props}>
           <i className='fa-solid fa-xmark'></i>

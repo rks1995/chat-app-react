@@ -21,7 +21,7 @@ const Sidebar = (props) => {
           placeholder='Search for conversations'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          onKeyDown={handleSearch}
+          onKeyUp={handleSearch}
         />
       </div>
       <div className={styles.conversation}>

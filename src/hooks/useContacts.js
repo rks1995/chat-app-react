@@ -11,27 +11,28 @@ const useContactsProvider = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const getUsers = () => {
-      // if local storage is not empty then retrieve the user
-      if (localStorage.getItem('userIds')) {
-        let ids = JSON.parse(localStorage.getItem('userIds'))
-        let localStorageUsers = []
-        ids.forEach((id) => {
-          data.users.forEach((user) => {
-            if (user.id === id) {
-              localStorageUsers.push(user)
-            }
-          })
+  const getUsers = () => {
+    // if local storage is not empty then retrieve the user
+    if (localStorage.getItem('userIds')) {
+      let ids = JSON.parse(localStorage.getItem('userIds'))
+      let localStorageUsers = []
+      ids.forEach((id) => {
+        data.users.forEach((user) => {
+          if (user.id === id) {
+            localStorageUsers.push(user)
+          }
         })
-        setUsers(localStorageUsers)
-        setTimeout(() => {
-          setLoading(false) // inorder to show loader
-        }, 500)
-      } else {
-        setLoading(false)
-      }
+      })
+      setUsers(localStorageUsers)
+      setTimeout(() => {
+        setLoading(false) // inorder to show spinner
+      }, 500)
+    } else {
+      setLoading(false)
     }
+  }
+
+  useEffect(() => {
     getUsers()
   }, [])
 
@@ -74,11 +75,11 @@ const useContactsProvider = () => {
     }
     // every time the input field is empty then grab the user from local storage to make search convenient
     if (!e.target.value) {
-      setUsers(data.users)
+      getUsers()
       return
     }
 
-    let newUser = data.users.filter((user) => {
+    let newUser = users.filter((user) => {
       let name = user.name.toLowerCase()
       return name.includes(e.target.value)
     })
