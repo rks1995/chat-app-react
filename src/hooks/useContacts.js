@@ -11,6 +11,10 @@ const useContactsProvider = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
 
+  useEffect(() => {
+    getUsers()
+  }, [])
+
   const getUsers = () => {
     // if local storage is not empty then retrieve the user
     if (localStorage.getItem('userIds')) {
@@ -31,10 +35,6 @@ const useContactsProvider = () => {
       setLoading(false)
     }
   }
-
-  useEffect(() => {
-    getUsers()
-  }, [])
 
   //  this function add user for starting conversation
   const addUser = (userId) => {

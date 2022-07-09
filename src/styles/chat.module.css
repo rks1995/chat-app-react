@@ -24,6 +24,7 @@
 /* ======================== chat message section =========================== */
 
 .message {
+  height: 90vh;
   padding: 20px;
   background-color: #eaf6f6;
 }

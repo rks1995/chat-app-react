@@ -1,30 +1,24 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import styles from '../styles/chat.module.css'
-import { data } from '../data'
 import { useContacts } from '../hooks/useContacts'
-import { useNavigate } from 'react-router-dom'
+import styles from '../styles/chat.module.css'
 
 const Chat = (props) => {
-  const [userDetails, setUserDetails] = useState([])
-  const { chatId } = useParams()
+  const [userDetails, setUserDetails] = useState({})
   const contacts = useContacts()
-  const navigate = useNavigate()
+  const { chatId } = useParams()
+
+  const handleOpenChats = () => {
+    let user = contacts.users.filter((user) => {
+      return Number(user.id) === Number(chatId)
+    })
+    setUserDetails(user[0])
+  }
 
   useEffect(() => {
-    const handleOpenChats = () => {
-      let user = data.users.filter((user) => {
-        return Number(user.id) === Number(chatId)
-      })
-
-      if (contacts.users.indexOf(user[0]) === -1) {
-        // user not present
-        navigate('/')
-        return
-      }
-      setUserDetails(user[0])
+    if (chatId) {
+      handleOpenChats()
     }
-    handleOpenChats()
   }, [chatId, []]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -46,54 +40,36 @@ const Chat = (props) => {
       <div className={styles.message}>
         <div className={styles.peoplesMessage}>
           <ul>
-            <li>
-              Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Sint ut magni repellendus possimus animi ipsa
-              porro eius ipsum?
-            </li>
-            <div className={styles.user}>
-              {userDetails && (
-                <img src={userDetails.img_url} alt='' width={30} />
-              )}
-              <span>Name</span> 9.01
-            </div>
-            <li>
-              Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Sint ut magni repellendus possimus animi ipsa
-              porro eius ipsum?
-            </li>
-            <div className={styles.user}>
-              {userDetails && (
-                <img src={userDetails.img_url} alt='' width={30} />
-              )}
-              <span>Name</span> 9.01
-            </div>
-            <li>
-              Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Sint ut magni repellendus possimus animi ipsa
-              porro eius ipsum?
-            </li>
-            <div className={styles.user}>
-              {userDetails && (
-                <img src={userDetails.img_url} alt='' width={30} />
-              )}
-              <span>Name</span> 9.01
-            </div>
+            {userDetails &&
+              userDetails.chats &&
+              userDetails.chats[0].friend_message.map((fm, index) => {
+                return (
+                  <div key={index}>
+                    <li key={userDetails.id}>{fm.content}</li>
+                    <div className={styles.user}>
+                      <img src={fm.img_url} alt='' width={30} />
+                      <span>{fm.name}</span> 9.01
+                    </div>
+                  </div>
+                )
+              })}
           </ul>
         </div>
         <div className={styles.yourMessage}>
           <ul>
-            <li>
-              Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing
-              elit. Sint ut magni repellendus possimus animi ipsa porro eius
-              ipsum?
-            </li>
-            <div className={styles.user}>
-              <span>Name</span> 9.01
-              {userDetails && (
-                <img src={userDetails.img_url} alt='' width={30} />
-              )}
-            </div>
+            {userDetails &&
+              userDetails.chats &&
+              userDetails.chats[0].my_message.map((message, index) => {
+                return (
+                  <div key={index}>
+                    <li key={userDetails.id}>{message.content}</li>
+                    <div className={styles.user}>
+                      9.01<span>{message.name}</span>
+                      <img src={message.img_url} alt='' width={20} />
+                    </div>
+                  </div>
+                )
+              })}
           </ul>
         </div>
       </div>
