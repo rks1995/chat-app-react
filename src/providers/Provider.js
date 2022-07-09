@@ -1,9 +1,11 @@
 import { createContext } from 'react'
 import { useContactsProvider } from '../hooks/useContacts'
 
+// global state
 let initialState = {
   users: [],
   loading: true,
+  addUser: () => {},
   handleSearch: () => {},
 }
 

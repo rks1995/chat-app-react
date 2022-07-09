@@ -9,7 +9,6 @@ const Sidebar = (props) => {
   const [inputText, setInputText] = useState('')
   const contacts = useContacts()
   const { users, loading, handleSearch } = contacts
-
   return (
     <div className={styles.sidebar}>
       <div className={styles.inputField}>

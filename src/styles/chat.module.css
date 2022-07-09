@@ -88,6 +88,10 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.chatFooter input {
+  cursor: text;
+}
 .chatFooter .attachment {
   padding: 9px;
   background-color: #fff;

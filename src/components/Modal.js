@@ -2,10 +2,12 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 import styles from '../styles/modal.module.css'
 import { data } from '../data'
+import { useContacts } from '../hooks/useContacts'
 
 const Modal = (props) => {
   const [modalUsers, setModalUsers] = useState(data.users)
   const [inputText, setInputText] = useState('')
+  const contacts = useContacts()
 
   const handleModalSearch = (e) => {
     console.log('change')
@@ -43,8 +45,8 @@ const Modal = (props) => {
         <ul>
           {modalUsers.map((user) => {
             return (
-              <li key={user.id}>
-                <p>{user.name}</p>
+              <li key={user.id} onClick={() => contacts.addUser(user.id)}>
+                {user.name}
               </li>
             )
           })}

@@ -13,16 +13,57 @@ const useContactsProvider = () => {
 
   useEffect(() => {
     const getUsers = () => {
-      setUsers(data.users)
-      setTimeout(() => {
-        setLoading(false) // inorder to show loader
-      }, 500)
+      // if local storage is not empty then retrieve the user
+      if (localStorage.getItem('userIds')) {
+        let ids = JSON.parse(localStorage.getItem('userIds'))
+        let localStorageUsers = []
+        ids.forEach((id) => {
+          data.users.forEach((user) => {
+            if (user.id === id) {
+              localStorageUsers.push(user)
+            }
+          })
+        })
+        setUsers(localStorageUsers)
+        setTimeout(() => {
+          setLoading(false) // inorder to show loader
+        }, 500)
+      } else {
+        setLoading(false)
+      }
     }
     getUsers()
   }, [])
 
+  //  this function add user for starting conversation
+  const addUser = (userId) => {
+    // add the userId into local storage to make data persistent
+    if (localStorage.getItem('userIds')) {
+      let ids = JSON.parse(localStorage.getItem('userIds'))
+      let isIdAlreadyPresent = ids.indexOf(userId)
+      if (isIdAlreadyPresent === -1) {
+        // add id to localStorage
+        localStorage.setItem('userIds', JSON.stringify([...ids, userId]))
+      }
+    } else {
+      localStorage.setItem('userIds', JSON.stringify([userId]))
+    }
+
+    let toUser = data.users.filter((user) => user.id === userId)
+
+    let index = users.indexOf(toUser[0])
+
+    if (index !== -1) {
+      // conversation of user has been already started
+      toast.error('User already added')
+      return
+    }
+    toast.success('Added New Conversation')
+    setUsers([...users, toUser[0]])
+  }
+
+  // this function will search for conversation
   const handleSearch = (e) => {
-    console.log('change')
     if (e.key === 'Enter') {
       if (!e.target.value) {
         toast.error('enter valid user', {
@@ -31,6 +72,7 @@ const useContactsProvider = () => {
         return
       }
     }
+    // every time the input field is empty then grab the user from local storage to make search convenient
     if (!e.target.value) {
       setUsers(data.users)
       return
@@ -48,6 +90,7 @@ const useContactsProvider = () => {
     users,
     loading,
     handleSearch,
+    addUser,
   }
 }
 

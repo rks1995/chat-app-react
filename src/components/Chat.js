@@ -2,17 +2,26 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from '../styles/chat.module.css'
 import { data } from '../data'
+import { useContacts } from '../hooks/useContacts'
+import { useNavigate } from 'react-router-dom'
 
 const Chat = (props) => {
   const [userDetails, setUserDetails] = useState([])
   const { chatId } = useParams()
+  const contacts = useContacts()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleOpenChats = () => {
       let user = data.users.filter((user) => {
         return Number(user.id) === Number(chatId)
       })
-      console.log(user)
+
+      if (contacts.users.indexOf(user[0]) === -1) {
+        // user not present
+        navigate('/')
+        return
+      }
       setUserDetails(user[0])
     }
     handleOpenChats()
