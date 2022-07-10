@@ -1,12 +1,67 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useContacts } from '../hooks/useContacts'
 import styles from '../styles/chat.module.css'
+import toast from 'react-hot-toast'
 
 const Chat = (props) => {
   const [userDetails, setUserDetails] = useState({})
+  const [message, setMessage] = useState('') // message to be send between users
+  const inputFile = useRef(null) // for file upload
+
   const contacts = useContacts()
   const { chatId } = useParams()
+
+  const fileUploadOnChange = () => {
+    if (inputFile.current.files && inputFile.current.files[0]) {
+      const fileList = inputFile.current.files[0]
+      if (fileList.type !== 'image/jpeg') {
+        toast.error('invalid file type, please upload jpeg format')
+        return
+      }
+      let imgObj = URL.createObjectURL(fileList)
+      let chats = userDetails.chats[0].my_message
+      let img_url = chats[0].img_url
+      let name = chats[0].name
+      //create new chat object
+      let chat = {
+        file: imgObj,
+        img_url,
+        name,
+      }
+
+      chats.push(chat)
+      console.log(chats)
+      setUserDetails({})
+    }
+  }
+
+  const handleOpenDialogue = () => {
+    inputFile.current.click()
+  }
+
+  // this function will trigger on pressing enter as well as on clicking send button
+  const sendMessage = (e) => {
+    if (e.key === 'Enter' || e.target.id === 'send-btn') {
+      if (message === '') {
+        toast.error('Message cannot be empty..')
+        return
+      }
+      let chats = userDetails.chats[0].my_message
+      let img_url = chats[0].img_url
+      let name = chats[0].name
+      //create new chat object
+      let chat = {
+        content: message,
+        img_url,
+        name,
+      }
+
+      chats.push(chat)
+      setMessage('')
+      setUserDetails({})
+    }
+  }
 
   const handleOpenChats = () => {
     let user = contacts.users.filter((user) => {
@@ -44,12 +99,15 @@ const Chat = (props) => {
               userDetails.chats &&
               userDetails.chats[0].friend_message.map((fm, index) => {
                 return (
-                  <div key={index}>
-                    <li key={userDetails.id}>{fm.content}</li>
-                    <div className={styles.user}>
-                      <img src={fm.img_url} alt='' width={30} />
-                      <span>{fm.name}</span> 9.01
-                    </div>
+                  <div className={styles.list} key={index}>
+                    {fm.content && <li>{fm.content}</li>}
+                    {fm.file && <img src={fm.file} alt='file' width={200} />}
+                    {(fm.content || fm.file) && (
+                      <div className={styles.user}>
+                        <img src={fm.img_url} alt='' width={20} />
+                        <span>{fm.name}</span> 9.01
+                      </div>
+                    )}
                   </div>
                 )
               })}
@@ -61,12 +119,17 @@ const Chat = (props) => {
               userDetails.chats &&
               userDetails.chats[0].my_message.map((message, index) => {
                 return (
-                  <div key={index}>
-                    <li key={userDetails.id}>{message.content}</li>
-                    <div className={styles.user}>
-                      9.01<span>{message.name}</span>
-                      <img src={message.img_url} alt='' width={20} />
-                    </div>
+                  <div className={styles.list} key={index}>
+                    {message.content && <li>{message.content}</li>}
+                    {message.file && (
+                      <img src={message.file} alt='file' width={200} />
+                    )}
+                    {(message.content || message.file) && (
+                      <div className={styles.user}>
+                        9.01<span>{message.name}</span>
+                        <img src={message.img_url} alt='' width={20} />
+                      </div>
+                    )}
                   </div>
                 )
               })}
@@ -74,20 +137,41 @@ const Chat = (props) => {
         </div>
       </div>
       <footer className={styles.chatFooter}>
-        <div className={styles.attachment}>
+        <div className={styles.attachment} onClick={handleOpenDialogue}>
+          <input
+            type='file'
+            onChange={(e) => fileUploadOnChange(e)}
+            ref={inputFile}
+            style={inputStyle.hidden}
+            multiple
+          />
           <i className='fa-solid fa-link'></i>
         </div>
-        <input type='text' placeholder='Send Message' />
+        <input
+          type='text'
+          placeholder='Send Message'
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={(e) => sendMessage(e)}
+        />
         <div className={styles.emoji}>
           <span>🙂</span>
           <span>
             <i className='fa-solid fa-angle-down'></i>
           </span>
         </div>
-        <button>Send</button>
+        <button id='send-btn' onClick={(e) => sendMessage(e)}>
+          Send
+        </button>
       </footer>
     </div>
   )
+}
+
+var inputStyle = {
+  hidden: {
+    display: 'none',
+  },
 }
 
 export default Chat

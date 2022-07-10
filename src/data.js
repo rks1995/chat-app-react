@@ -8,8 +8,9 @@ export const data = {
         {
           my_message: [
             {
+              file: '',
               content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+                'Vecna is alive, he will be back stronger in season 5 😭',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -17,7 +18,22 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: 'Hi',
+              name: 'Rajan Meitei',
+              img_url:
+                'https://cdn-icons-png.flaticon.com/512/4825/4825062.png',
+            },
+            {
+              file: '',
+              content: 'Did you Watched Stranger things season 4?',
+              name: 'Rajan Meitei',
+              img_url:
+                'https://cdn-icons-png.flaticon.com/512/4825/4825062.png',
+            },
+            {
+              file: 'https://images.immediate.co.uk/production/volatile/sites/3/2022/05/Vecna-Stranger-Things-4-b36005b.jpg?quality=90&resize=620,413',
+              content: 'What happened to vecna?',
               name: 'Rajan Meitei',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825062.png',
@@ -34,8 +50,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -43,7 +59,8 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Rahul Singh',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825072.png',
@@ -60,8 +77,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -69,7 +86,8 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Robin Singha',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825096.png',
@@ -86,8 +104,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -95,7 +113,8 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Jitu',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825123.png',
@@ -112,8 +131,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -121,7 +140,8 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Rose',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825112.png',
@@ -138,8 +158,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -147,7 +167,8 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Ratna Kumar',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825044.png',
@@ -164,8 +185,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -173,7 +194,8 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Rohit Sonar',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/4825/4825066.png',
@@ -190,8 +212,8 @@ export const data = {
         {
           my_message: [
             {
-              content:
-                'Hi there!Hi there! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ut magni repellendus possimus animi ipsa porro eius ipsum?',
+              file: '',
+              content: '',
               name: 'Admin',
               img_url:
                 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png',
@@ -199,10 +221,11 @@ export const data = {
           ],
           friend_message: [
             {
-              content: 'some content',
+              file: '',
+              content: '',
               name: 'Suraj Chetri',
               img_url:
-                'https://cdn-icons-png.flaticon.com/512/4825/4825062.png',
+                'https://cdn-icons-png.flaticon.com/512/4825/4825072.png',
             },
           ],
         },
