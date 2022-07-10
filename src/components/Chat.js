@@ -1,16 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useContacts } from '../hooks/useContacts'
+import EmojiPicker from 'emoji-picker-react'
 import styles from '../styles/chat.module.css'
 import toast from 'react-hot-toast'
 
 const Chat = (props) => {
   const [userDetails, setUserDetails] = useState({})
   const [message, setMessage] = useState('') // message to be send between users
+  const [showEmoji, setShowEmoji] = useState(false)
   const inputFile = useRef(null) // for file upload
-
   const contacts = useContacts()
   const { chatId } = useParams()
+
+  useEffect(() => {
+    if (chatId) {
+      handleOpenChats()
+    }
+  }, [chatId, []]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fileUploadOnChange = () => {
     if (inputFile.current.files && inputFile.current.files[0]) {
@@ -36,6 +43,7 @@ const Chat = (props) => {
     }
   }
 
+  // this function will allow user to browse image on his local machine
   const handleOpenDialogue = () => {
     inputFile.current.click()
   }
@@ -70,11 +78,14 @@ const Chat = (props) => {
     setUserDetails(user[0])
   }
 
-  useEffect(() => {
-    if (chatId) {
-      handleOpenChats()
-    }
-  }, [chatId, []]) // eslint-disable-line react-hooks/exhaustive-deps
+  const handleEmoji = (e) => {
+    setMessage(e.target.innerText)
+  }
+
+  const onEmojiClick = (event, emojiObject) => {
+    setMessage(emojiObject.emoji)
+    setShowEmoji(false)
+  }
 
   return (
     <div className={styles.chat}>
@@ -155,9 +166,13 @@ const Chat = (props) => {
           onKeyDown={(e) => sendMessage(e)}
         />
         <div className={styles.emoji}>
-          <span>🙂</span>
+          <span onClick={handleEmoji}>🙂</span>
           <span>
-            <i className='fa-solid fa-angle-down'></i>
+            <i
+              className='fa-solid fa-angle-down'
+              onClick={() => setShowEmoji(!showEmoji)}
+            ></i>
+            {showEmoji && <EmojiPicker onEmojiClick={onEmojiClick} />}
           </span>
         </div>
         <button id='send-btn' onClick={(e) => sendMessage(e)}>
