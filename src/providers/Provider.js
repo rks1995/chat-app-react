@@ -7,6 +7,7 @@ let initialState = {
   loading: true,
   addUser: () => {},
   handleSearch: () => {},
+  getUsers: () => {},
 }
 
 const ContactsContext = createContext(initialState)

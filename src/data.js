@@ -41,6 +41,7 @@ export const data = {
           ],
         },
       ],
+      lastText: 'Vecna is alive, he will be back stronger in season 5 😭',
     },
     {
       id: 2,
@@ -68,6 +69,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
     {
       id: 3,
@@ -95,6 +97,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
     {
       id: 4,
@@ -122,6 +125,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
     {
       id: 5,
@@ -149,6 +153,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
     {
       id: 6,
@@ -176,6 +181,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
     {
       id: 7,
@@ -203,6 +209,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
     {
       id: 8,
@@ -230,6 +237,7 @@ export const data = {
           ],
         },
       ],
+      lastText: '',
     },
   ],
 }

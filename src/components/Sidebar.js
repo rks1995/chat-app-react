@@ -9,6 +9,7 @@ const Sidebar = (props) => {
   const [inputText, setInputText] = useState('')
   const contacts = useContacts()
   const { users, loading, handleSearch } = contacts
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.inputField}>
@@ -44,7 +45,7 @@ const Sidebar = (props) => {
                     </div>
                     <div className={styles.text}>
                       <p className={styles.name}>{user.name}</p>
-                      <p className={styles.someText}>Some text ....</p>
+                      <p className={styles.someText}>{user.lastText}</p>
                     </div>
                     <div className={styles.time}>9.15Am</div>
                   </li>

@@ -38,7 +38,6 @@ const useContactsProvider = () => {
 
   //  this function add user for starting conversation
   const addUser = (userId) => {
-    // add the userId into local storage to make data persistent
     if (localStorage.getItem('userIds')) {
       let ids = JSON.parse(localStorage.getItem('userIds'))
       let isIdAlreadyPresent = ids.indexOf(userId)
@@ -47,6 +46,7 @@ const useContactsProvider = () => {
         localStorage.setItem('userIds', JSON.stringify([...ids, userId]))
       }
     } else {
+      // add the userId into local storage to make data persistent
       localStorage.setItem('userIds', JSON.stringify([userId]))
     }
 
@@ -92,6 +92,7 @@ const useContactsProvider = () => {
     loading,
     handleSearch,
     addUser,
+    getUsers,
   }
 }
 

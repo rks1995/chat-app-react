@@ -36,10 +36,9 @@ const Chat = (props) => {
         img_url,
         name,
       }
-
+      userDetails.lastText = 'Image'
+      contacts.getUsers()
       chats.push(chat)
-      console.log(chats)
-      setUserDetails({})
     }
   }
 
@@ -55,6 +54,7 @@ const Chat = (props) => {
         toast.error('Message cannot be empty..')
         return
       }
+
       let chats = userDetails.chats[0].my_message
       let img_url = chats[0].img_url
       let name = chats[0].name
@@ -64,10 +64,11 @@ const Chat = (props) => {
         img_url,
         name,
       }
-
+      // to show latest text during conversation between users
+      userDetails.lastText = message
+      contacts.getUsers() // for rerendering sidebar user so that latest conversation is intact
       chats.push(chat)
       setMessage('')
-      setUserDetails({})
     }
   }
 
@@ -79,7 +80,7 @@ const Chat = (props) => {
   }
 
   const handleEmoji = (e) => {
-    setMessage(e.target.innerText)
+    setMessage(message + e.target.innerText)
   }
 
   const onEmojiClick = (event, emojiObject) => {

@@ -25,7 +25,12 @@ function App() {
         <Routes>
           <Route
             path='chat/:chatId'
-            element={<Chat handleOpenConversation={handleOpenConversation} />}
+            element={
+              <Chat
+                handleCloseModal={handleCloseModal}
+                handleOpenConversation={handleOpenConversation}
+              />
+            }
           />
         </Routes>
       </div>
