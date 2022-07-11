@@ -12,9 +12,7 @@ const Modal = (props) => {
   const handleModalSearch = (e) => {
     if (e.key === 'Enter') {
       if (!inputText) {
-        toast.error('Invalid User', {
-          position: 'top-right',
-        })
+        toast.error('Invalid User')
         return
       }
     }

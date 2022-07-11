@@ -67,9 +67,7 @@ const useContactsProvider = () => {
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
       if (!e.target.value) {
-        toast.error('enter valid user', {
-          position: 'top-right',
-        })
+        toast.error('enter valid user')
         return
       }
     }
