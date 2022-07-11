@@ -14,6 +14,7 @@ const Chat = (props) => {
   const contacts = useContacts()
   const { chatId } = useParams()
 
+  // for auto scroll while sending message
   useEffect(() => {
     const domNode = divMessage.current
     if (domNode) {
