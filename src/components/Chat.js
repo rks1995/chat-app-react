@@ -9,9 +9,17 @@ const Chat = (props) => {
   const [userDetails, setUserDetails] = useState({})
   const [message, setMessage] = useState('') // message to be send between users
   const [showEmoji, setShowEmoji] = useState(false)
+  const divMessage = useRef(null)
   const inputFile = useRef(null) // for file upload
   const contacts = useContacts()
   const { chatId } = useParams()
+
+  useEffect(() => {
+    const domNode = divMessage.current
+    if (domNode) {
+      domNode.scrollTop = domNode.scrollHeight
+    }
+  })
 
   useEffect(() => {
     if (chatId) {
@@ -89,7 +97,7 @@ const Chat = (props) => {
   }
 
   return (
-    <div className={styles.chat}>
+    <div ref={divMessage} className={styles.chat}>
       <header className={styles.chatHeader}>
         <div className={styles.avatar}>
           {userDetails && <img src={userDetails.img_url} alt='' width={40} />}
